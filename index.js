@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
  const bodyParser = require('body-parser')
 const app = express();
 app.use(bodyParser.json());
-const port = 5000 || process.env.port ;
 
 //routes
 app.post('/farmRecords', async (req, res)=>{
@@ -100,7 +99,7 @@ mongoose.connect(process.env.DB_URL)
 })
 
 //listen to port
-app.listen(port, ()=>{
+app.listen(process.env.port || 8900, ()=>{
     console.log(`the server is running on port: ${port}`)
 });
     
