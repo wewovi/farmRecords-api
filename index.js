@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
  require('dotenv/config');
  const model = require('./models/records.js')
  const bodyParser = require('body-parser')
+ const cors = require('cors')
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 const port =process.env.port || 8900;
 
 //database connection
