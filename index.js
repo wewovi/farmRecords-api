@@ -6,6 +6,16 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(bodyParser.json());
 const port =process.env.port || 8900;
+
+//database connection
+mongoose.connect(process.env.DB_URL)
+.then(()=>{
+    console.log("bd connected successfully");
+})
+.catch((err)=>{
+    console.log(err)
+})
+
 //routes
 app.post('/farmRecords', async (req, res)=>{
     const createRecord =  model.create({
@@ -89,14 +99,7 @@ app.get('/farmRecords/:id', async (req, res)=>{
     }
 })
 
-//database connection
-mongoose.connect(process.env.DB_URL)
-.then(()=>{
-    console.log("bd connected successfully");
-})
-.catch((err)=>{
-    console.log(err)
-})
+
 
 //listen to port
 app.listen(port, ()=>{
