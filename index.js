@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors())
-const port =process.env.port || 8900;
+const port = 8900 || process.env.port;
 
 //database connection
 mongoose.connect(process.env.DB_URL)
